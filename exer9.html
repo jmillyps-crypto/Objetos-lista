@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 9</title>
+    <script>
+    var campeonato = {
+
+        equipes: [],
+        partidas: [],
+
+        cadastrar(){
+            var nome = prompt('Digite o nome da equipe')
+
+            var pontuacao = {
+                nome: nome,
+                pontos: 0,
+                vitorias: 0,
+                empates: 0,
+                derrotas: 0,
+                golsMarcados: 0,
+                golsSofridos: 0
+            }
+            this.equipes.push(pontuacao)
+            alert('Equipe cadastrada')
+        },
+
+        partida(){
+            var nome1 = prompt('Digite a primeira equipe')
+            var nome2 = prompt('Digite a segunda equipe')
+
+            if(nome1 == nome2){
+                alert('Uma equipe não pode jogar contra ela mesma')
+                return
+            }
+
+            var gols1 = Number(prompt('Gols da primeira equipe'))
+            var gols2 = Number(prompt('Gols da segunda equipe'))
+
+            var equipe1
+            var equipe2
+
+            for(var equipe of this.equipes){
+
+                if(equipe.nome == nome1){
+                    equipe1 = equipe
+                }
+
+                if(equipe.nome == nome2){
+                    equipe2 = equipe
+                }
+            }
+
+            if(equipe1 == undefined || equipe2 == undefined){
+                alert('Equipe não encontrada')
+                return
+            }
+
+            equipe1.golsMarcados = equipe1.golsMarcados + gols1
+            equipe1.golsSofridos = equipe1.golsSofridos + gols2
+
+            equipe2.golsMarcados = equipe2.golsMarcados + gols2
+            equipe2.golsSofridos = equipe2.golsSofridos + gols1
+
+            if(gols1 > gols2){
+                equipe1.pontos = equipe1.pontos + 3
+                equipe1.vitorias = equipe1.vitorias + 1
+                equipe2.derrotas = equipe2.derrotas + 1
+            }
+
+            else if(gols2 > gols1){
+                equipe2.pontos = equipe2.pontos + 3
+                equipe2.vitorias = equipe2.vitorias + 1
+                equipe1.derrotas = equipe1.derrotas + 1
+            }
+
+            else{
+                equipe1.pontos = equipe1.pontos + 1
+                equipe2.pontos = equipe2.pontos + 1
+
+                equipe1.empates = equipe1.empates + 1
+                equipe2.empates = equipe2.empates + 1
+            }
+
+            var dadosequipes = {
+                equipe1: nome1,
+                equipe2: nome2,
+                gols1: gols1,
+                gols2: gols2
+            }
+            this.partidas.push(dadosequipes)
+            alert('Partida registrada')
+        },
+
+        saldo(equipe){
+            return equipe.golsMarcados - equipe.golsSofridos
+        },
+
+        classificacao(){
+            var resultado = ''
+
+            for(var equipe of this.equipes){
+
+                resultado = resultado +
+                equipe.nome + ' - ' +
+                equipe.pontos + ' pontos - Saldo: ' +
+                this.saldo(equipe) + '\n'
+            }
+
+            alert('Classificação:\n' + resultado)
+        },
+
+        melhorAtaque(){
+            var melhor = this.equipes[0]
+
+            for(var equipe of this.equipes){
+
+                if(equipe.golsMarcados > melhor.golsMarcados){
+                    melhor = equipe
+                }
+            }
+
+            alert('Melhor ataque: ' + melhor.nome +
+                ' - ' + melhor.golsMarcados + ' gols')
+        }
+    }
+
+
+    campeonato.cadastrar()
+    campeonato.cadastrar()
+    campeonato.cadastrar()
+
+    campeonato.partida()
+
+    campeonato.classificacao()
+
+    campeonato.melhorAtaque()
+</script>
+</head>
+<body>
+    
+</body>
+</html>

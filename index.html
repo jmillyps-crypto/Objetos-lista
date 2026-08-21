@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var dogdoi ={
+            veterinarios: [],
+            pacientes:[],
+            medicamentos:[],
+            endereco:{
+                lougradouro:'rua dos cachorros',
+                numero:10,
+                bairro:'vira-lata',
+                cidade:'pinchers',
+                estado:'sp',
+            },
+            contatos:[
+                {
+                    tipo:'telefone',
+                    valor:'18 999888',
+                },{
+                    tipo:whatssap,
+                    valor:'18 988767766',
+                },
+                {
+                    tipo:'instagram',
+                    valor:'https://instagram.com/dogdoi',
+                }
+
+            ],
+            cadastrarveterinario(){
+                var nome= prompt('digite seu nome')
+                var especialidade= prompt('digite sua especialidade')
+
+                this.veterinarios.push({
+                    nome:nome,
+                    especialidade:especialidade
+                })
+            },
+
+            cadastrarpaciente(){
+                var nometutor=prompt('digite seu nome')
+                var telefone = prompt('digite seu telefone')
+                var idade= Number(prompt('digite sua idade'))
+                var nomeanimal = prompt('digite o nome do animal')
+
+                this.pacientes.push({
+                    nometutor:nometutor,
+                    telefone:telefone,
+                    idade:idade,
+                    nomeanimal:nomeanimal
+                })
+            },
+
+            listarveterinarios(){
+                 for(veterinarios of this.veterinarios){
+                    alert(veterinarios.nome + '=' + veterinarios.especialidade )
+                }
+            },
+
+            listarpacientes(){
+                for(pacientes of this.pacientes){
+                     alert(pacientes.nometutor)
+                     alert(pacientes.telefone)
+                     alert(pacientes.idade)
+                     alert(pacientes.nomeanimal)
+                }
+            }
+
+            
+        }
+
+        dogdoi.cadastrarveterinario()
+        dogdoi.listarveterinarios()
+        dogdoi.cadastrarpaciente()
+        dogdoi.listarpacientes()
+
+
+      for(contatos of dogdoi.contados){
+        alert(contatos.tipo + '=' + contato.valor )
+      }
+
+  
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 6</title>
+    <script>
+        var estacionamento = {
+            veiculos: [],
+            vagas: 5,
+
+            entrada(){
+                var placa = prompt('Digite a placa')
+                var modelo = prompt('Digite o modelo')
+                var horario = Number(prompt('Digite o horário de entrada'))
+
+                if(this.veiculos.length == this.vagas){
+                    alert('Estacionamento lotado')
+                    return
+                }
+
+                for(var veiculo of this.veiculos){
+                    if(veiculo.placa == placa){
+                        alert('Essa placa já está no estacionamento')
+                        return
+                    }
+                }
+
+                this.veiculos.push({
+                    placa: placa,
+                    modelo: modelo,
+                    horario: horario
+                })
+
+                alert('Veículo estacionado')
+            },
+
+            saida(){
+                var placa = prompt('Digite a placa')
+                var horarioSaida = Number(prompt('Digite o horário de saída'))
+
+                for(var veiculo of this.veiculos){
+
+                    if(veiculo.placa == placa){
+
+                        var horas = horarioSaida - veiculo.horario
+                        var valor = horas * 8
+
+                        alert('Valor a pagar: R$ ' + valor)
+
+                        var posicao = this.veiculos.indexOf(veiculo)
+                        this.veiculos.splice(posicao, 1)
+
+                        alert('Veículo saiu')
+                        return
+                    }
+                }
+
+                alert('Essa placa não está no estacionamento')
+            },
+
+            verificar(){
+                var placa = prompt('Digite a placa')
+
+                for(var veiculo of this.veiculos){
+
+                    if(veiculo.placa == placa){
+                        alert('Veículo encontrado')
+                        return
+                    }
+                }
+
+                alert('Veículo não encontrado')
+            },
+
+            vagaslivres(){
+                var livres = this.vagas - this.veiculos.length
+
+                alert('Vagas livres: ' + livres)
+            }
+    }
+
+    estacionamento.entrada()
+    estacionamento.entrada()
+
+    estacionamento.verificar()
+    estacionamento.vagaslivres()
+    estacionamento.saida()
+</script>
+</head>
+<body>
+    
+</body>
+</html>

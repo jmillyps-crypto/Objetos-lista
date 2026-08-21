@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 7</title>
+    <script>
+    var urna = {
+
+        notas: [],
+
+        registrar(){
+            var nota = Number(prompt('Digite uma nota de 1 a 5'))
+
+            if(nota >= 1 && nota <= 5){
+                this.notas.push(nota)
+                alert('Avaliação registrada')
+            }
+            else{
+                alert('Nota inválida')
+            }
+        },
+
+        contar(){
+            var n1 = 0
+            var n2 = 0
+            var n3 = 0
+            var n4 = 0
+            var n5 = 0
+
+            for(var nota of this.notas){
+
+                if(nota == 1){
+                    n1 = n1 + 1
+                }
+
+                if(nota == 2){
+                    n2 = n2 + 1
+                }
+
+                if(nota == 3){
+                    n3 = n3 + 1
+                }
+
+                if(nota == 4){
+                    n4 = n4 + 1
+                }
+
+                if(nota == 5){
+                    n5 = n5 + 1
+                }
+            }
+
+            alert('Nota 1: ' + n1 +
+                '\nNota 2: ' + n2 +
+                '\nNota 3: ' + n3 +
+                '\nNota 4: ' + n4 +
+                '\nNota 5: ' + n5)
+        },
+
+        media(){
+            var soma = 0
+
+            for(var nota of this.notas){
+                soma = soma + nota
+            }
+
+            var media = soma / this.notas.length
+
+            alert('Média: ' + media)
+        },
+
+        positivas(){
+            var positivas = 0
+
+            for(var nota of this.notas){
+
+                if(nota == 4 || nota == 5){
+                    positivas = positivas + 1
+                }
+            }
+
+            var porcentagem = positivas / this.notas.length * 100
+
+            alert('Avaliações positivas: ' + porcentagem + '%')
+        },
+
+        maisEscolhida(){
+            var n1 = 0
+            var n2 = 0
+            var n3 = 0
+            var n4 = 0
+            var n5 = 0
+
+            for(var nota of this.notas){
+
+                if(nota == 1){
+                    n1 = n1 + 1
+                }
+
+                if(nota == 2){
+                    n2 = n2 + 1
+                }
+
+                if(nota == 3){
+                    n3 = n3 + 1
+                }
+
+                if(nota == 4){
+                    n4 = n4 + 1
+                }
+
+                if(nota == 5){
+                    n5 = n5 + 1
+                }
+            }
+
+            var maior = n1
+            var nota = 1
+
+            if(n2 > maior){
+                maior = n2
+                nota = 2
+            }
+
+            if(n3 > maior){
+                maior = n3
+                nota = 3
+            }
+
+            if(n4 > maior){
+                maior = n4
+                nota = 4
+            }
+
+            if(n5 > maior){
+                maior = n5
+                nota = 5
+            }
+
+            alert('Nota mais escolhida: ' + nota)
+        }
+    }
+
+    urna.registrar()
+    urna.registrar()
+    urna.registrar()
+
+    urna.contar()
+    urna.media()
+    urna.positivas()
+    urna.maisEscolhida()
+</script>
+</head>
+<body>
+    
+</body>
+</html>

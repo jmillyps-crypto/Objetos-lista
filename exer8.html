@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 8</title>
+    <script>
+    var sistema = {
+
+        equipamentos: [],
+        emprestimos: [],
+
+        cadastrar(){
+            var codigo = prompt('Digite o código do equipamento')
+            var nome = prompt('Digite o nome do equipamento')
+
+            var informacoes = {
+                codigo: codigo,
+                nome: nome,
+                situacao: 'Disponível'
+            }
+            this.equipamentos.push(informacoes)
+
+            alert('Equipamento cadastrado')
+        },
+
+        emprestar(){
+            var codigo = prompt('Digite o código do equipamento')
+            var pessoa = prompt('Digite o nome da pessoa')
+            var data = prompt('Digite a data de retirada')
+
+            for(var equipamento of this.equipamentos){
+
+                if(equipamento.codigo == codigo){
+
+                    if(equipamento.situacao == 'Emprestado'){
+                        alert('Esse equipamento já está emprestado')
+                        return
+                    }
+
+                    equipamento.situacao = 'Emprestado'
+
+                    var descricao = {
+                        codigo: codigo,
+                        pessoa: pessoa,
+                        data: data,
+                        situacao: 'Não devolvido'
+                    }
+
+                    this.emprestimos.push(descricao)
+
+                    alert('Empréstimo realizado')
+                    return
+                }
+            }
+
+            alert('Equipamento não encontrado')
+        },
+
+        devolver(){
+            var codigo = prompt('Digite o código do equipamento')
+
+            for(var equipamento of this.equipamentos){
+
+                if(equipamento.codigo == codigo){
+                    equipamento.situacao = 'Disponível'
+                }
+            }
+
+            for(var emprestimo of this.emprestimos){
+
+                if(emprestimo.codigo == codigo){
+                    emprestimo.situacao = 'Devolvido'
+                    alert('Equipamento devolvido')
+                    return
+                }
+            }
+
+            alert('Empréstimo não encontrado')
+        },
+
+        disponiveis(){
+            var resultado = ''
+
+            for(var equipamento of this.equipamentos){
+
+                if(equipamento.situacao == 'Disponível'){
+                    resultado = resultado + equipamento.nome + '\n'
+                }
+            }
+
+            if(resultado != ''){
+                alert('Equipamentos disponíveis:\n' + resultado)
+            }
+            else{
+                alert('Não existem equipamentos disponíveis')
+            }
+        },
+
+        emprestados(){
+            var resultado = ''
+
+            for(var emprestimo of this.emprestimos){
+
+                if(emprestimo.situacao == 'Não devolvido'){
+                    resultado = resultado + emprestimo.pessoa + ' - ' + emprestimo.codigo + '\n'
+                }
+            }
+
+            if(resultado != ''){
+                alert('Empréstimos não devolvidos:\n' + resultado)
+            }
+            else{
+                alert('Não existem empréstimos pendentes')
+            }
+        }
+    }
+
+
+    sistema.cadastrar()
+    sistema.cadastrar()
+
+    sistema.emprestar()
+
+    sistema.disponiveis()
+
+    sistema.emprestados()
+
+    sistema.devolver()
+
+    sistema.disponiveis()
+</script>
+</head>
+<body>
+    
+</body>
+</html>

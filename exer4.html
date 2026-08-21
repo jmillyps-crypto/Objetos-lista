@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 4</title>
+    <script>
+    var turma = {
+        nome: '',
+        totalAulas: 0,
+        estudantes: [],
+
+        cadastrarturma(){
+            this.nome = prompt('Digite o nome da turma')
+            this.totalAulas = Number(prompt('Digite a quantidade total de aulas'))
+        },
+
+        cadastrarestudante(){
+            var nome = prompt('Digite o nome do estudante')
+
+            var salva = {
+                nome: nome,
+                presencas: 0,
+                faltas: 0
+            }
+            this.estudantes.push(salva)
+
+            alert('Estudante cadastrado')
+        },
+
+        registrarPresenca(){
+            var nome = prompt('Deseja registrar presença para qual estudante? ')
+
+            for(var estudante of this.estudantes){
+
+                if(estudante.nome == nome){
+
+                    if(estudante.presencas < this.totalAulas){
+                        estudante.presencas += 1
+                        alert('Presença registrada')
+                        
+                    }
+
+                    else{
+                        alert('Não é possível registrar mais presenças. A quantidade total de aulas já foi atingida')
+                        
+                    }
+                    
+                    return true
+                }
+            
+                
+            }
+            alert('Esse estudante não existe')
+           
+            
+        },
+
+        registrarFalta(){
+            var nome = prompt('Deseja registrar faltas para qual estudante?')
+
+            for(var estudante of this.estudantes){
+
+                if(estudante.nome == nome){
+
+                    if(estudante.faltas < this.totalAulas){
+                        estudante.faltas += 1
+                        alert('Falta registrada')
+                        
+                    }
+                    
+
+                    else{
+                        alert('Não é possível registrar mais faltas. A quantidade total de aulas já foi atingida')
+                    }
+                    return true
+                    
+                }
+            }
+
+            alert('Esse estudante não existe')
+        },
+
+        calcularfrequencia(){
+            var nome = prompt('Digite o nome do estudante que deseja calcular a frequencia: ')
+
+            for(var estudante of this.estudantes){
+
+                if(estudante.nome == nome){
+
+                    var frequencia = (estudante.presencas / this.totalAulas) * 100
+
+                    alert('A frequência de ' + nome + ' é: ' + frequencia + '%')
+                    return
+                }
+                else{
+                    alert('Esse estudante não existe')
+                }
+            }
+
+            
+        },
+
+        mostrarFrequenciainferior(){
+            var resultado = ''
+
+            for(var estudante of this.estudantes){
+
+                var frequencia = (estudante.presencas / this.totalAulas) * 100
+
+                if(frequencia < 75){
+                    resultado =  estudante.nome + ' - ' + frequencia + '%'
+                }
+            }
+
+            if(resultado != ''){
+                alert('Estudantes com frequência inferior a 75%: ' + resultado)
+            }
+
+            else{
+                alert('Não existem estudantes com frequência inferior a 75%')
+            }
+        }
+    }
+
+
+    turma.cadastrarturma()
+
+    turma.cadastrarestudante()
+    turma.cadastrarestudante()
+
+    turma.registrarPresenca()
+    turma.registrarPresenca()
+    turma.registrarFalta()
+    turma.registrarPresenca()
+    turma.registrarFalta()
+    turma.registrarPresenca()
+    turma.registrarFalta()
+
+    turma.calcularfrequencia()
+
+    turma.mostrarFrequenciainferior()
+</script>
+</head>
+<body>
+    
+</body>
+</html>

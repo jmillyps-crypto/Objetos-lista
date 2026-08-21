@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 2</title>
+    <script>
+        var maquina_de_cafe={
+            quantidade_de_cafe:20,
+            quantidade_de_agua:200,
+            quantidade_copos:1,
+
+            preparar_cafe(){
+                var cafe = Number(prompt('Qual a quantidade de café'))
+                var agua = Number(prompt('Qual a quantidade de água'))
+                var copos = Number(prompt('Qual a quantidade de copos'))
+
+                if(cafe >= 20 && agua >= 200 && copos >= 1){
+                    alert('Tem inredientes disponiveis.Realize o café')
+                }
+
+                else{
+                    alert('Você não tem ingredientes disponiveis')
+                }
+            }
+        }
+
+        maquina_de_cafe.preparar_cafe()
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+    <script>
+       var temperatura={
+        semana: [],
+
+        verificartemperatura(){
+            var pergunta = Number(prompt('informe a temperatura'))
+
+            if (pergunta < -50 ||  pergunta > 60){
+                alert('Não é permitido temperaturas menores que -50 ou maiores que 60')
+            } else {
+                this.semana.push(pergunta)  
+            }
+   
+        },
+
+        mostrartemperatura(){
+            for(semana of this.semana){
+                alert(semana)
+            }
+        },
+
+        calcularmaior(){
+            var maior = 0
+            for( pergunta of this.semana){
+                if(pergunta > maior){
+                   maior = pergunta
+                }
+            }
+
+             alert(maior + ' graus é a maior temperatura')
+        },
+
+        calcularmenor(){
+            var menor = 60
+            for (pergunta of this.semana){
+                if(pergunta < menor){
+                    menor = pergunta
+                }   
+            }
+            alert(menor + ' graus é a menor temperatura')
+        },
+
+        calcularmedia(){
+            var soma = 0
+            for(pergunta of this.semana){
+                soma += pergunta
+            }
+
+            this.media= soma/ this.semana.length
+
+            alert('A média da semana é: ' + this.media)
+
+        },
+
+        qntsmedia(){
+            var acima = []
+            for(pergunta of this.semana){
+                if(pergunta > this.media){
+                    acima.push(pergunta)
+                }
+            }
+            alert('A quantidade de registro acima da media foi: ' + acima)
+        }
+
+        
+       }
+
+       temperatura.verificartemperatura()
+       temperatura.verificartemperatura()
+       temperatura.verificartemperatura()
+       temperatura.verificartemperatura()
+       temperatura.verificartemperatura()
+       temperatura.verificartemperatura()
+       temperatura.verificartemperatura()
+       
+       temperatura.mostrartemperatura()
+       temperatura.calcularmaior()
+       temperatura.calcularmenor()
+       temperatura.calcularmedia()
+       temperatura.qntsmedia()
+
+
+       
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
